@@ -1,0 +1,12 @@
+
+
+table {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+
+.navbar {
+    justify-content: end;
+    background: rgb(240, 135, 135);
+}

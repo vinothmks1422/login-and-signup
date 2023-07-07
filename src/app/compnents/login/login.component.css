@@ -1,0 +1,24 @@
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: rgba(25, 172, 103, 0.24);
+    /* flex-direction: column; */
+    /* border: 2px solid red; */
+}
+
+.form {
+    /* background: rgb(231, 212, 212); */
+    text-align: center;
+    padding: 2.5rem 3rem;
+    border-radius: 10px;
+}
+
+.errorMsg {
+    color: red;
+}
+
+.signup a {
+    text-decoration: none;
+}

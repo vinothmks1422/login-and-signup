@@ -1,0 +1,27 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": [
+    {
+      "name": "Vinoth S",
+      "email": "vinothraja1402@gmail.com",
+      "mobile": 3456,
+      "dob": "2222-02-22",
+      "address": "THIRUVALLUR",
+      "password": "2345",
+      "cnfpass": "2345"
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+<div class="body">
+    <form [formGroup]="data" (ngSubmit)="submitForm()">
+        <mat-card>
+            <mat-card-content class="form">
+                <div>
+                    <!-- <div>
+                        gf
+                        <p *ngIf="data.get('tittle')?.value === '1'">Male</p>
+                        <p *ngIf="data.get('tittle')?.value === '2'">Female</p>
+                    </div> -->
+                    <h1 style="font-weight: 500;">SignUp</h1>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Tittle</mat-label>
+                            <mat-select matInput formControlName="tittle" name="tittle">
+                                <!-- <mat-option *ngFor="let tittle of tittles" [value]="tittle.Value">
+                                    {{tittle.Value}}
+                                </mat-option> -->
+                                <mat-option value="Mr">Mr.</mat-option>
+                                <mat-option value="Ms">Ms.</mat-option>
+                                <mat-option value="Mrs">Mrs.</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>First Name</mat-label>
+                            <input matInput type="text" placeholder="Ex:Vinoth" name="name" formControlName="fname">
+                        </mat-form-field>
+                        <p class="errorMsg"
+                            *ngIf="data.get('fname')?.touched && data.get('fname')?.errors?.['required']">
+                            Enter Your
+                            FirstName*</p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput type="text" placeholder="Ex:S" name="name" formControlName="lname">
+                        </mat-form-field>
+                        <p class="errorMsg"
+                            *ngIf="data.get('lname')?.touched && data.get('lname')?.errors?.['required']">
+                            Enter Your
+                            LastName*</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Gender</mat-label>
+                            <mat-select matInput formControlName="gender" name="gender">
+                                <mat-option value="Male">Male</mat-option>
+                                <mat-option value="Female">Female</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <!-- <p class="errorMsg"
+                            *ngIf="data.get('fname')?.touched && data.get('fname')?.errors?.['required']">
+                            Enter Your
+                            FirstName*</p> -->
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Date of Birth</mat-label>
+                            <input matInput type="date" placeholder="Ex:abc@gmail.com" name="dob" formControlName="dob">
+                        </mat-form-field>
+                        <p class="errorMsg" *ngIf="data.get('dob')?.touched && data.get('dob')?.errors?.['required']">
+                            Enter Your
+                            DOB*</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Address</mat-label>
+                            <input matInput type="address" placeholder="Enter your Address" name="address"
+                                formControlName="address">
+                        </mat-form-field>
+                        <p class="errorMsg"
+                            *ngIf="data.get('address')?.touched && data.get('address')?.errors?.['required']"> Enter
+                            Your
+                            Address*</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input #passInput matInput id="eye" type="password" placeholder="Enter 8 digit Password"
+                                name="password" formControlName="password">
+                            <button type="button" matSuffix mat-icon-button aria-label="Clear"
+                                (click)="togglePasswordVisibility(passInput)">
+                                <mat-icon *ngIf="passInput?.type === 'text'">visibility</mat-icon>
+                                <mat-icon *ngIf="passInput?.type === 'password'">visibility_off</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <p class="errorMsg"
+                            *ngIf="data.get('password')?.touched && data.get('password')?.errors?.['required']"> Enter
+                            Your
+                            password*</p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Confirm Password</mat-label>
+                            <input #cnfpassInput matInput type="password" placeholder="Re-Enter Password" name="cnfpass"
+                                formControlName="cnfpass">
+                            <button type="button" matSuffix mat-icon-button aria-label="Clear"
+                                (click)="togglePasswordVisibility(cnfpassInput)">
+                                <mat-icon *ngIf="passInput?.type === 'text'">visibility</mat-icon>
+                                <mat-icon *ngIf="passInput?.type === 'password'">visibility_off</mat-icon>
+                            </button>
+                        </mat-form-field>
+                        <p class="errorMsg"
+                            *ngIf="data.get('cnfpass')?.touched && data.get('cnfpass')?.errors?.['required']"> Re-Enter
+                            Your
+                            Password*</p>
+                        <p class="errorMsg" *ngIf="data.get('cnfpass')?.touched &&  isPasswordMachingError">Enter the
+                            correct password</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-12" formArrayName="mobile">
+                        <div class="d-flex" *ngFor="let c of getMobiles().controls; index as i">
+                            <div [formGroupName]="i">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Mobile</mat-label>
+                                    <input matInput type="string" placeholder="Ex:0123456789" name="mobile"
+                                        formControlName="mobiles">
+                                </mat-form-field>
+                                <!-- <p class="errorMsg"
+                            *ngIf="data.get('mobile')?.touched && data.get('mobile')?.errors?.['required']">
+                            Enter Your
+                            Mobile Number*</p> -->
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput type="email" placeholder="Ex:abc@gmail.com" name="email"
+                                        formControlName="email">
+                                </mat-form-field>
+                                <!-- <p class="errorMsg"
+                                    *ngIf="data.get('email')?.touched && data.get('email')?.errors?.['required']">
+                                    Enter Your
+                                    Email*</p> -->
+                                <button type="button" *ngIf="getMobiles().controls.length > 1" mat-fab
+                                    (click)="removeMobile(i)">
+                                    <mat-icon class="add-course-btn">delete</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12">
+                        <button type="button" mat-fab (click)="addMobile()">
+                            <mat-icon class="add-course-btn">add</mat-icon>
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" [disabled]="data.invalid" mat-raised-button color="primary">SignUp</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </form>
+</div>

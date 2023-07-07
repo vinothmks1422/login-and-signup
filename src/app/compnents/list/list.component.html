@@ -1,0 +1,36 @@
+<div class="nav navbar" *ngIf="loggedIn">
+    <button mat-button [matMenuTriggerFor]="menu">
+        <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+            <mat-icon>logout</mat-icon>
+        </button>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()" >Logout</button>
+    </mat-menu>
+</div>
+
+
+<table class="table table-bordered">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
+            <th scope="col">Address</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let u of userList; index as i">
+            <td>{{u.id}}</td>
+            <td>{{u.fname + " " + u.lname}}</td>
+            <td>{{u.email}}</td>
+            <td>{{u.password }}</td>
+            <td>{{u.address}}</td>
+            <td>{{u.dob}}</td>
+            <td><button class="btn btn-primary" (click)="deleteUser(u.id, i)">Click</button></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,24 @@
+.body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    /* flex-direction: column; */
+    /* border: 2px solid red; */
+    background: rgba(25, 172, 103, 0.24);
+
+}
+
+.form {
+    text-align: center;
+    padding: 2.5rem 6rem;
+    /* border-radius: 10px; */
+}
+
+.input {
+    width: 10rem;
+}
+
+.errorMsg {
+    color: red;
+}

@@ -1,0 +1,36 @@
+<div class="body">
+    <form [formGroup]="data" (ngSubmit)="submitForm()">
+        <mat-card>
+            <mat-card-content class="form">
+                <div>
+                    <h1 style="font-weight: 500;">Login</h1>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Ex:abc@gmail.com" name="email" formControlName="email">
+                    </mat-form-field>
+                    <p class="errorMsg" *ngIf="data.get('email')?.touched && data.get('email')?.errors?.['required']">
+                        Please Enter Your
+                        Eamil*</p>
+                </div>
+                <div>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput placeholder="Enter 8 digit Password" name="password" formControlName="password">
+                    </mat-form-field>
+                    <p class="errorMsg"
+                        *ngIf="data.get('password')?.touched && data.get('password')?.errors?.['required']">
+                        Please Enter Your
+                        Password*</p>
+                </div>
+                <div>
+                    <button type="submit" [disabled]="data.invalid" mat-raised-button color="primary">Login</button>
+                </div>
+                <div>
+                    <p class="signup">Don't have an Account <a routerLink="/signup">SignUp</a></p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </form>
+</div>
